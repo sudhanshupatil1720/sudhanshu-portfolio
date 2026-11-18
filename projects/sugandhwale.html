@@ -1,0 +1,518 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sugandhwale — Sudhanshu Patil</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #f7f6f1;
+  --ink: #292b22;
+  --muted: #818174;
+  --line: #deded3;
+  --accent: #697451;
+  --mono: 'DM Mono', monospace;
+  --sans: 'DM Sans', sans-serif;
+  --serif: 'Playfair Display', serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+nav {
+  height: 76px;
+  padding: 0 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.logo {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.back {
+  font: 11px var(--mono);
+  color: var(--muted);
+}
+
+main {
+  max-width: 1050px;
+  margin: auto;
+  padding: 90px 40px 110px;
+}
+
+.eyebrow {
+  font: 10px var(--mono);
+  letter-spacing: 1.5px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.hero {
+  margin-bottom: 75px;
+}
+
+.hero h1 {
+  font: 500 clamp(48px, 8vw, 88px)/1.1 var(--serif);
+  letter-spacing: -2px;
+  margin: 25px 0;
+}
+
+.hero h1 em {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.hero-description {
+  max-width: 620px;
+  font-size: 16px;
+  line-height: 1.9;
+  color: #696a5e;
+}
+
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  margin-top: 45px;
+  padding: 25px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.meta-item span {
+  display: block;
+  font: 10px var(--mono);
+  color: var(--muted);
+  margin-bottom: 9px;
+  text-transform: uppercase;
+}
+
+.meta-item p {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.brand-preview {
+  min-height: 330px;
+  background: #e9e8dc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+  margin-bottom: 100px;
+}
+
+.brand-preview .marathi {
+  font-size: 15px;
+  color: #73795e;
+  margin-bottom: 18px;
+  letter-spacing: 2px;
+}
+
+.brand-preview h2 {
+  font: 500 clamp(45px, 7vw, 75px) var(--serif);
+  color: #414832;
+  letter-spacing: -1.5px;
+}
+
+.brand-preview p {
+  font: 10px var(--mono);
+  letter-spacing: 2px;
+  color: #777967;
+  margin-top: 20px;
+}
+
+.section {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 35px;
+  padding: 50px 0;
+  border-top: 1px solid var(--line);
+}
+
+.section-label {
+  font: 10px var(--mono);
+  letter-spacing: 1px;
+  color: var(--muted);
+  text-transform: uppercase;
+  padding-top: 7px;
+}
+
+.section-content h2 {
+  font: 500 31px var(--serif);
+  margin-bottom: 20px;
+}
+
+.section-content p {
+  max-width: 650px;
+  color: #696a5e;
+  font-size: 14px;
+  line-height: 1.95;
+  margin-bottom: 15px;
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.work-item {
+  border: 1px solid var(--line);
+  padding: 22px;
+  min-height: 125px;
+}
+
+.work-number {
+  font: 10px var(--mono);
+  color: var(--accent);
+  margin-bottom: 17px;
+}
+
+.work-item h3 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 9px;
+}
+
+.work-item p {
+  font-size: 12px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 22px;
+}
+
+.stack span {
+  border: 1px solid var(--line);
+  padding: 9px 14px;
+  font: 11px var(--mono);
+  color: #626552;
+}
+
+.reflection {
+  max-width: 650px;
+  margin-left: 225px;
+}
+
+.reflection::before {
+  content: "WHAT I TOOK AWAY";
+  display: block;
+  font: 10px var(--mono);
+  letter-spacing: .08em;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.reflection p {
+  font: 500 24px/1.65 var(--serif);
+  color: #454740;
+}
+
+.visit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  border-top: 1px solid var(--line);
+  margin-top: 80px;
+  padding-top: 30px;
+}
+
+.visit p {
+  font: 11px var(--mono);
+  color: var(--muted);
+}
+
+.visit a {
+  font-size: 13px;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 5px;
+}
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 28px 8%;
+  display: flex;
+  justify-content: space-between;
+  font: 10px var(--mono);
+  color: var(--muted);
+}
+
+@media(max-width: 700px) {
+  nav {
+    padding: 0 6%;
+  }
+
+  main {
+    padding: 65px 7% 80px;
+  }
+
+  .hero h1 {
+    letter-spacing: -1px;
+  }
+
+  .project-meta {
+    gap: 25px;
+  }
+
+  .section {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .visit-links{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+  }
+  
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reflection {
+    margin-left: 0;
+  }
+
+  .reflection p {
+    font-size: 21px;
+  }
+
+  .brand-preview {
+    min-height: 250px;
+  }
+
+  footer {
+    padding: 25px 6%;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="../index.html" class="logo">SP.</a>
+  <a href="../index.html#work" class="back">← BACK TO PROJECTS</a>
+</nav>
+
+<main>
+
+<header class="hero">
+  <div class="eyebrow">PROJECT 03 / DIGITAL BRANDING</div>
+
+  <h1>Sugandh<em>wale.</em></h1>
+
+  <p class="hero-description">
+    Bringing a traditional essence brand into the digital space
+    through e-commerce, content and visual storytelling.
+    A project that brought together technology, branding and
+    the art of communicating a product's identity.
+  </p>
+
+  <div class="project-meta">
+    <div class="meta-item">
+      <span>Role</span>
+      <p>Media & Tech Intern</p>
+    </div>
+
+    <div class="meta-item">
+      <span>Category</span>
+      <p>E-commerce & Branding</p>
+    </div>
+
+    <div class="meta-item">
+      <span>Platform</span>
+      <p>WordPress · WooCommerce</p>
+    </div>
+
+    <div class="meta-item">
+      <span>Duration</span>
+      <p>July – October 2026</p>
+    </div>
+  </div>
+</header>
+
+<section class="brand-preview">
+  <div class="marathi">सुगंधवाले</div>
+  <h2>Sugandhwale</h2>
+  <p>TRADITION · ESSENCE · IDENTITY</p>
+</section>
+
+<section class="section">
+  <div class="section-label">01 / OVERVIEW</div>
+
+  <div class="section-content">
+    <h2>A brand, finding its digital space.</h2>
+
+    <p>
+      Sugandhwale is an essence brand. During my internship,
+      I worked across its digital presence, contributing to
+      website development, content creation and branding.
+    </p>
+
+    <p>
+      The project involved translating the brand's identity
+      into an online shopping experience while making its
+      products and communication accessible to customers.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-label">02 / CONTRIBUTIONS</div>
+
+  <div class="section-content">
+    <h2>Where I contributed.</h2>
+
+    <p>
+      My work brought together different parts of the brand's
+      digital presence, from its e-commerce setup to the
+      content used to communicate with its audience.
+    </p>
+
+    <div class="work-grid">
+
+      <div class="work-item">
+        <div class="work-number">01</div>
+        <h3>Website development</h3>
+        <p>
+          Worked on the website using WordPress and
+          WooCommerce, including store setup and theme
+          customisation.
+        </p>
+      </div>
+
+      <div class="work-item">
+        <div class="work-number">02</div>
+        <h3>Content writing</h3>
+        <p>
+          Created written content and explored blog ideas
+          to communicate product information and brand stories.
+        </p>
+      </div>
+
+      <div class="work-item">
+        <div class="work-number">03</div>
+        <h3>Digital branding</h3>
+        <p>
+          Contributed to visual direction, branding discussions
+          and the digital presentation of the brand.
+        </p>
+      </div>
+
+      <div class="work-item">
+        <div class="work-number">04</div>
+        <h3>E-commerce experience</h3>
+        <p>
+          Worked on presenting products and organising the
+          online store experience.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-label">03 / TOOLS</div>
+
+  <div class="section-content">
+    <h2>The tools behind the work.</h2>
+
+    <p>
+      A combination of web technologies, content tools
+      and digital platforms supported the project.
+    </p>
+
+    <div class="stack">
+      <span>WordPress</span>
+      <span>WooCommerce</span>
+      <span>HTML</span>
+      <span>CSS</span>
+      <span>Canva</span>
+      <span>Content Writing</span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-label">04 / REFLECTION</div>
+
+  <div class="reflection">
+    <p>
+      Working on a brand taught me that a website is more
+      than a digital storefront. It is where design,
+      technology and storytelling meet to shape how
+      people experience a brand.
+    </p>
+  </div>
+</section>
+
+<div class="visit">
+  <p>EXPLORE THE PROJECT</p>
+
+  <div class = "visit-links">
+    <a href="https://sugandhwale.com/"
+      target = "_blank"
+      rel = "noopener noreferrer">
+      Visit live website ↗
+    </a>
+
+    <a href="https://github.com/AryaTambe/Sugandhwale-website"
+     target="_blank"
+     rel="noopener noreferrer">
+    View website repository ↗
+    </a>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <span>© 2026 SUDHANSHU PATIL</span>
+  <span>BUILT WITH CURIOSITY.</span>
+</footer>
+
+</body>
+</html>

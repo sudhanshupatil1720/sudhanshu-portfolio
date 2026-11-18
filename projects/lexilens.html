@@ -1,0 +1,505 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f7f7f4">
+<meta name="description" content="LexiLens — an AI governance case study by Sudhanshu Patil.">
+<title>LexiLens — AI Governance Case Study | Sudhanshu Patil</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #f7f7f4;
+  --ink: #20211f;
+  --muted: #777971;
+  --line: #dedfd8;
+  --soft: #eeeee8;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'DM Sans', Arial, sans-serif;
+  --mono: 'DM Mono', monospace;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.wrap {
+  width: min(900px, calc(100% - 48px));
+  margin: auto;
+}
+
+.nav {
+  height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  font-weight: 700;
+  letter-spacing: -.04em;
+  font-size: 17px;
+}
+
+.brand span {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.navlinks {
+  display: flex;
+  gap: 24px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.navlinks a:hover,
+.back:hover {
+  color: var(--ink);
+}
+
+.back {
+  display: inline-block;
+  margin: 42px 0 28px;
+  color: var(--muted);
+  font: 11px var(--mono);
+}
+
+.eyebrow, .kicker {
+  font: 11px var(--mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hero {
+  padding: 38px 0 76px;
+  border-bottom: 1px solid var(--line);
+}
+
+h1 {
+  max-width: 760px;
+  font-size: clamp(48px, 8vw, 88px);
+  line-height: .99;
+  letter-spacing: -.075em;
+  margin: 24px 0;
+  font-weight: 500;
+}
+
+h1 em {
+  font-family: var(--serif);
+  font-weight: 500;
+}
+
+.lead {
+  max-width: 650px;
+  color: #5e6059;
+  font-size: 17px;
+  line-height: 1.85;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 26px;
+}
+
+.tag {
+  background: var(--soft);
+  padding: 7px 10px;
+  font: 10px var(--mono);
+  color: #66685f;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.btn {
+  display: inline-flex;
+  padding: 13px 17px;
+  border: 1px solid var(--ink);
+  font-size: 12px;
+  transition: .2s;
+}
+
+.btn.primary {
+  background: var(--ink);
+  color: white;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.section {
+  padding: 62px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.section-head {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 28px;
+  margin-bottom: 28px;
+}
+
+.section-head h2 {
+  font-size: clamp(27px, 4vw, 38px);
+  letter-spacing: -.055em;
+  font-weight: 500;
+  margin: 0;
+}
+
+.copy {
+  max-width: 650px;
+  margin-left: 198px;
+  color: #5e6059;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.copy p { margin: 0 0 16px; }
+
+.risk-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.risk {
+  background: var(--bg);
+  padding: 22px;
+  min-height: 220px;
+}
+
+.risk small {
+  font: 10px var(--mono);
+  color: var(--muted);
+}
+
+.risk h3 {
+  font-size: 19px;
+  font-weight: 500;
+  margin: 22px 0 10px;
+}
+
+.risk p {
+  font-size: 12px;
+  line-height: 1.85;
+  color: var(--muted);
+  margin: 0;
+}
+
+.safeguards {
+  border-top: 1px solid var(--line);
+}
+
+.safeguard {
+  display: grid;
+  grid-template-columns: 45px 1fr;
+  gap: 18px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.safeguard-no {
+  font: 11px var(--mono);
+  color: var(--muted);
+}
+
+.safeguard h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.safeguard p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.reflection {
+  padding: 38px;
+  background: #efefe9;
+  max-width: 700px;
+}
+
+.reflection p {
+  margin: 0;
+  font: italic clamp(20px, 3vw, 27px)/1.6 var(--serif);
+  color: #454740;
+}
+
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 20px 0 28px;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  color: var(--muted);
+  font: 10px var(--mono);
+}
+
+@media(max-width:700px) {
+  .wrap { width: calc(100% - 36px); }
+  .nav { height: 68px; }
+  .navlinks { gap: 14px; font-size: 10px; }
+  .hero { padding: 28px 0 58px; }
+  .section { padding: 48px 0; }
+  .section-head {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .copy { margin-left: 0; }
+  .risk-grid { grid-template-columns: 1fr; }
+  .risk { min-height: auto; }
+  .reflection { padding: 25px; }
+  .reflection { margin-left: 0; }
+  .footer { flex-direction: column; }
+}
+
+@media(max-width:420px) {
+  .navlinks { gap: 10px; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="wrap nav">
+  <a class="brand" href="../index.html">sp<span> / portfolio</span></a>
+
+  <nav class="navlinks">
+    <a href="../index.html#about">About</a>
+    <a href="../index.html#work">Work</a>
+    <a href="../index.html#contact">Contact</a>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <a class="back" href="../index.html#work">← BACK TO SELECTED WORK</a>
+
+  <section class="hero">
+    <div class="eyebrow">01 / Research & case study</div>
+
+    <h1>LexiLens —<br><em>AI Governance.</em></h1>
+
+    <p class="lead">
+      A research-led exploration of how generative and agentic AI
+      could shape decisions in a legal technology setting — and why
+      fairness, human oversight and accountability matter.
+    </p>
+
+    <div class="meta">
+      <span class="tag">Responsible AI</span>
+      <span class="tag">Bias & fairness</span>
+      <span class="tag">AI risk</span>
+      <span class="tag">Legal technology</span>
+    </div>
+
+    <div class="actions">
+      <a class="btn primary"
+         href="https://www.linkedin.com/pulse/why-ai-governance-matters-more-than-i-first-thought-sudhanshu-patil-zdg4f/"
+         target="_blank" rel="noreferrer">
+        Read the original article ↗
+      </a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div class="kicker">01 / Overview</div>
+      <h2>Looking beyond whether AI works.</h2>
+    </div>
+
+    <div class="copy">
+      <p>
+        This case study uses LexiLens, a fictional legal technology
+        platform, to examine the risks that can arise when AI is
+        introduced into professional legal workflows. It considers
+        two uses: generative AI that helps draft client letters and
+        summarise contracts, and agentic AI that reads incoming client
+        emails, classifies legal issues and routes cases to solicitors.
+      </p>
+
+      <p>
+        The focus is not on building a real product. It is on
+        understanding how apparently useful systems can affect people,
+        and what safeguards might help keep their use responsible.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div class="kicker">02 / The risks</div>
+      <h2>Three problems worth examining.</h2>
+    </div>
+
+    <div class="risk-grid">
+      <article class="risk">
+        <small>01 — FAIRNESS</small>
+        <h3>Hidden bias</h3>
+        <p>
+          A triage system could treat formal writing as a signal of
+          urgency, even when the underlying facts are identical.
+          Differences in writing style could then influence who
+          receives attention first.
+        </p>
+      </article>
+
+      <article class="risk">
+        <small>02 — RELIABILITY</small>
+        <h3>Hallucinations</h3>
+        <p>
+          Generative AI could produce legal citations that do not exist
+          or explain legal concepts incorrectly while sounding
+          confident, making qualified human review essential.
+        </p>
+      </article>
+
+      <article class="risk">
+        <small>03 — ALIGNMENT</small>
+        <h3>Misaligned goals</h3>
+        <p>
+          A system optimised to process cases quickly could favour
+          simple cases and delay complex matters, even when those
+          complex matters are more urgent for the people involved.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div class="kicker">03 / Safeguards</div>
+      <h2>What responsible use could look like.</h2>
+    </div>
+
+    <div class="copy">
+      <p>
+        The article considers practical measures that could be
+        applied to the fictional LexiLens system:
+      </p>
+    </div>
+
+    <div class="safeguards">
+      <article class="safeguard">
+        <div class="safeguard-no">01</div>
+        <div>
+          <h3>Test for writing-style bias</h3>
+          <p>
+            Rewrite the same complaint in a different style while
+            keeping its facts unchanged, then compare the system's
+            priority assessment. Repeat the checks periodically to
+            look for changes over time.
+          </p>
+        </div>
+      </article>
+
+      <article class="safeguard">
+        <div class="safeguard-no">02</div>
+        <div>
+          <h3>Keep a human in the review process</h3>
+          <p>
+            Have a qualified solicitor review AI-generated legal
+            documents before they reach a client, and flag cases
+            that remain unresolved for too long for human attention.
+          </p>
+        </div>
+      </article>
+
+      <article class="safeguard">
+        <div class="safeguard-no">03</div>
+        <div>
+          <h3>Maintain clear records</h3>
+          <p>
+            Log generated documents alongside who reviewed them and
+            when, so there is a traceable record if an error or
+            concern needs to be investigated.
+          </p>
+        </div>
+      </article>
+
+      <article class="safeguard">
+        <div class="safeguard-no">04</div>
+        <div>
+          <h3>Monitor continuously</h3>
+          <p>
+            Do not treat governance as a one-time check before launch.
+            Continue testing, monitoring and reviewing the system as
+            its data and operating context change.
+          </p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div class="kicker">04 / Reflection</div>
+      <h2>The shift in perspective.</h2>
+    </div>
+
+    <div class="reflection">
+      <p>
+        Building an AI model is only part of the challenge. Making
+        sure it continues to behave fairly, responsibly and
+        transparently over time is just as important.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div class="kicker">05 / Original work</div>
+      <h2>Read the full article.</h2>
+    </div>
+
+    <div class="copy">
+      <p>
+        This portfolio page is a concise presentation of the ideas
+        explored in the original LinkedIn article.
+      </p>
+
+      <a class="btn primary"
+         href="https://www.linkedin.com/pulse/why-ai-governance-matters-more-than-i-first-thought-sudhanshu-patil-zdg4f/"
+         target="_blank" rel="noreferrer">
+        Why AI Governance Matters More Than I First Thought ↗
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>© 2026 SUDHANSHU PATIL</span>
+    <span>MADE WITH CURIOSITY · MUMBAI, INDIA</span>
+  </footer>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,876 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f7f7f4">
+<meta name="description" content="Sudhanshu Patil — Technology, creativity and curiosity.">
+<title>Sudhanshu Patil — Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #f7f7f4;
+  --ink: #20211f;
+  --muted: #777971;
+  --line: #dedfd8;
+  --soft: #eeeee8;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'DM Sans', Arial, sans-serif;
+  --mono: 'DM Mono', monospace;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.wrap {
+  width: min(1080px, calc(100% - 48px));
+  margin: auto;
+}
+
+/* NAVIGATION */
+
+.nav {
+  height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  font-weight: 700;
+  letter-spacing: -.04em;
+  font-size: 17px;
+}
+
+.brand span {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.navlinks {
+  display: flex;
+  gap: 28px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.navlinks a:hover {
+  color: var(--ink);
+}
+
+/* BAZANGA POSTER */
+
+.poster-showcase {
+  width: 85%;
+  max-width: 900px;
+  aspect-ratio: 1659 / 941;
+  margin: 30px auto;
+  overflow: hidden;
+}
+
+.poster-showcase img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* HERO */
+
+.hero {
+  padding: 76px 0 92px;
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 60px;
+  align-items: end;
+}
+
+.eyebrow, .kicker {
+  font: 11px var(--mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+h1 {
+  font-size: clamp(54px, 8vw, 100px);
+  line-height: .98;
+  letter-spacing: -.075em;
+  margin: 25px 0 28px;
+  font-weight: 500;
+}
+
+h1 em {
+  font-family: var(--serif);
+  font-weight: 500;
+}
+
+.intro {
+  max-width: 590px;
+  color: #5e6059;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.hero-aside {
+  border-left: 1px solid var(--line);
+  padding: 8px 0 8px 22px;
+  color: var(--muted);
+  font: 11px/1.9 var(--mono);
+}
+
+.hero-aside strong {
+  display: block;
+  color: var(--ink);
+  font: 13px var(--sans);
+  margin-bottom: 8px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.btn {
+  display: inline-flex;
+  padding: 13px 17px;
+  border: 1px solid var(--ink);
+  font-size: 12px;
+  transition: .2s;
+}
+
+.btn.primary {
+  background: var(--ink);
+  color: white;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* SECTIONS */
+
+.section {
+  padding: 70px 0;
+  border-top: 1px solid var(--line);
+}
+
+.section-head {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+  margin-bottom: 38px;
+}
+
+.section-head h2 {
+  font-size: clamp(28px, 4vw, 42px);
+  letter-spacing: -.055em;
+  font-weight: 500;
+  margin: 0;
+}
+
+.section-head p {
+  max-width: 510px;
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+/* ABOUT */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+}
+
+.about-copy {
+  font-size: 15px;
+  line-height: 1.9;
+  color: #5e6059;
+}
+
+.about-copy p {
+  margin: 0 0 16px;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 32px;
+}
+
+.fact {
+  border-top: 1px solid var(--line);
+  padding-top: 13px;
+}
+
+.fact small {
+  display: block;
+  font: 10px var(--mono);
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.fact strong {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* PROJECTS */
+
+.projects {
+  border-top: 1px solid var(--line);
+}
+
+.project {
+  display: grid;
+  grid-template-columns: 58px 1fr 160px;
+  gap: 22px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.project-no {
+  font: 11px var(--mono);
+  color: var(--muted);
+}
+
+.project h3 {
+  font-size: 21px;
+  font-weight: 500;
+  margin: 0 0 8px;
+}
+
+.project p {
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--muted);
+  max-width: 590px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 13px;
+}
+
+.tag {
+  background: var(--soft);
+  padding: 6px 9px;
+  font: 10px var(--mono);
+  color: #66685f;
+}
+
+.project-type {
+  text-align: right;
+  font: 10px/1.8 var(--mono);
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+/* EXPERIENCE */
+
+.experience {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+}
+
+.exp-meta {
+  font: 11px/1.8 var(--mono);
+  color: var(--muted);
+}
+
+.exp-content h3 {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0 0 5px;
+}
+
+.exp-content .org {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.exp-content ul {
+  padding-left: 17px;
+  color: #62645d;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+/* SKILLS */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.skill {
+  background: var(--bg);
+  padding: 22px;
+}
+
+.skill h3 {
+  font-size: 14px;
+  margin: 0 0 14px;
+}
+
+.skill p {
+  font-size: 12px;
+  line-height: 1.9;
+  color: var(--muted);
+}
+
+/* INTERESTS */
+
+.notes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.note {
+  padding: 25px;
+  background: #efefe9;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.note span {
+  font: 10px var(--mono);
+  color: var(--muted);
+}
+
+.note h3 {
+  font: italic 23px var(--serif);
+  font-weight: 500;
+}
+
+/* CONTACT */
+
+.contact {
+  padding: 90px 0 75px;
+  border-top: 1px solid var(--line);
+}
+
+.contact h2 {
+  font-size: clamp(42px, 7vw, 76px);
+  line-height: 1.02;
+  letter-spacing: -.07em;
+  font-weight: 500;
+  margin: 20px 0 24px;
+}
+
+.contact h2 em {
+  font-family: var(--serif);
+}
+
+.contact-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 24px;
+}
+
+.contact p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 420px;
+}
+
+.contact-links {
+  display: flex;
+  gap: 20px;
+  font: 11px var(--mono);
+  padding-bottom: 8px;
+}
+
+/* FOOTER */
+
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 20px 0 28px;
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font: 10px var(--mono);
+}
+
+.dot {
+  height: 7px;
+  width: 7px;
+  border-radius: 50%;
+  background: #849b7c;
+  display: inline-block;
+}
+
+/* MOBILE */
+
+@media(max-width:700px) {
+  .wrap {
+    width: calc(100% - 36px);
+  }
+
+  .nav {
+    height: 68px;
+  }
+
+  .navlinks {
+    gap: 14px;
+    font-size: 10px;
+  }
+
+  .hero {
+    padding: 55px 0 65px;
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .hero-aside {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    padding: 15px 0 0;
+  }
+
+  .section {
+    padding: 54px 0;
+  }
+
+  .section-head,
+  .about-grid,
+  .experience {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .project {
+    grid-template-columns: 30px 1fr;
+    gap: 14px;
+  }
+
+  .project-type {
+    grid-column: 2;
+    text-align: left;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .notes {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-row {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .footer {
+    gap: 15px;
+    flex-direction: column;
+  }
+}
+
+@media(max-width:420px) {
+  .navlinks {
+    gap: 10px;
+  }
+
+  .navlinks a:nth-child(3) {
+    display: none;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    flex-wrap: wrap;
+  }
+}
+
+  .project{
+    position: relative;    
+  }
+
+  .project-link{
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+</style>
+</head>
+
+<body>
+
+<header class="wrap nav">
+  <a class="brand" href="#top">sp<span> / portfolio</span></a>
+
+  <nav class="navlinks">
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#writing">Interests</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="top" class="wrap">
+
+<!-- YOUR BAZANGA POSTER -->
+<section class="poster-showcase" aria-label="Portfolio poster">
+  <img
+    src="port5.png"
+    alt="Sudhanshu Patil's creative portfolio poster"
+  >
+</section>
+
+<!-- HERO -->
+
+<section class="hero">
+  <div>
+    <div class="eyebrow">Computer Science · Mumbai, India</div>
+
+    <h1>Sudhanshu<br><em>Patil.</em></h1>
+
+    <p class="intro">
+      I’m a computer science undergraduate interested in the
+      questions that sit between technology and people —
+      responsible AI, data privacy, and the systems we build
+      around them. I also write, make things, and stay curious.
+    </p>
+
+    <div class="actions">
+      <a class="btn primary" href="#work">Explore my work ↗</a>
+      <a class="btn" href="mailto:sudhanshupatilbusiness@gmail.com">
+        Get in touch ↗
+      </a>
+    </div>
+  </div>
+
+  <aside class="hero-aside">
+    <strong>Currently exploring</strong>
+    AI governance<br>
+    Data privacy & protection<br>
+    Technology, ethics & society<br><br>
+    <span><i class="dot"></i> Open to learning opportunities</span>
+  </aside>
+</section>
+
+<!-- ABOUT -->
+
+<section class="section" id="about">
+  <div class="section-head">
+    <div class="kicker">01 / About</div>
+    <div><h2>A little about me.</h2></div>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-copy">
+      <p>
+        I’m pursuing a B.Sc. in Computer Science at
+        Kirti M. Doongursee College, University of Mumbai.
+        My interests have gradually moved towards AI governance
+        and the broader impact of emerging technology.
+      </p>
+
+      <p>
+        I enjoy looking at technology beyond how it works:
+        who it affects, what can go wrong, and how we can make
+        it more responsible. Alongside that, I have hands-on
+        experience with web development, digital content,
+        and brand storytelling.
+      </p>
+
+      <p>
+        Outside the technical side, I’m drawn to creative writing,
+        theatre, and the little details that make a good story.
+      </p>
+    </div>
+
+    <div class="facts">
+      <div class="fact">
+        <small>Education</small>
+        <strong>B.Sc. Computer Science</strong>
+      </div>
+      <div class="fact">
+        <small>University</small>
+        <strong>University of Mumbai</strong>
+      </div>
+      <div class="fact">
+        <small>Graduation</small>
+        <strong>Expected 2027</strong>
+      </div>
+      <div class="fact">
+        <small>Current CGPA</small>
+        <strong>8.26 / 10</strong>
+      </div>
+      <div class="fact">
+        <small>Based in</small>
+        <strong>Mumbai, India</strong>
+      </div>
+      <div class="fact">
+        <small>Languages</small>
+        <strong>English · Hindi · Marathi</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+
+<section class="section" id="work">
+  <div class="section-head">
+    <div class="kicker">02 / Selected work</div>
+    <div>
+      <h2>Things I’ve worked on.</h2>
+      <p>
+        A mix of research-led thinking, technical building,
+        and creative problem-solving.
+      </p>
+    </div>
+  </div>
+
+  <div class="projects">
+
+    <article class="project">
+      <div class="project-no">01</div>
+      <div>
+        <h3>LexiLens — AI Governance Case Study</h3>
+        <p>
+          A case study exploring responsible AI, with a focus on
+          bias, hallucinations, and risks in generative and
+          agentic AI. Looked at real-world AI failure scenarios
+          through ethical, legal, and compliance perspectives.
+        </p>
+        <div class="tags">
+          <span class="tag">Responsible AI</span>
+          <span class="tag">Risk analysis</span>
+          <span class="tag">AI governance</span>
+        </div>
+      </div>
+      <div class="project-type">Research / Case study</div>
+      <a class="project-link"
+        href="projects/lexilens.html"
+        aria-label="View LexiLens project"></a>
+    </article>
+
+    <article class="project">
+      <div class="project-no">02</div>
+      <div>
+        <h3>Moment Framez</h3>
+        <p>
+          A full-stack web platform built across frontend,
+          backend, and database structure. Worked on backend APIs
+          and database operations to support efficient data handling.
+        </p>
+        <div class="tags">
+          <span class="tag">HTML & CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">Express</span>
+          <span class="tag">MongoDB</span>
+        </div>
+      </div>
+      <div class="project-type">Web development</div>
+      <a class="project-link"
+        href="projects/moment-framez.html"
+        aria-label="View Moment Framez project"></a>
+    </article>
+
+    <article class="project">
+      <div class="project-no">03</div>
+      <div>
+        <h3>Sugandhwale</h3>
+        <p>
+          Contributed to the company’s digital presence through
+          website management, content planning, blog writing,
+          AI-assisted social content, and digital branding.
+        </p>
+        <div class="tags">
+          <span class="tag">WordPress</span>
+          <span class="tag">Content writing</span>
+          <span class="tag">Prompt engineering</span>
+          <span class="tag">Digital branding</span>
+        </div>
+      </div>
+      <div class="project-type">Internship / Media & tech</div>
+      <a class="project-link"
+        href="projects/sugandhwale.html"
+        aria-label="View Sugandhwale project"></a>
+    </article>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+
+<section class="section">
+  <div class="section-head">
+    <div class="kicker">03 / Experience</div>
+    <div><h2>Where I’ve contributed.</h2></div>
+  </div>
+
+  <div class="experience">
+    <div class="exp-meta">
+      JULY 2026 — OCTOBER 2026<br>
+      Mumbai, India
+    </div>
+
+    <div class="exp-content">
+      <h3>Media & Tech Intern</h3>
+      <div class="org">Sugandhwale</div>
+
+      <ul>
+        <li>Worked on developing and managing the company website using WordPress.</li>
+        <li>Created social media content using AI tools and prompt engineering.</li>
+        <li>Supported content planning, blog writing, and digital branding.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+
+<section class="section">
+  <div class="section-head">
+    <div class="kicker">04 / Toolkit</div>
+    <div>
+      <h2>Areas I’m building in.</h2>
+      <p>A growing toolkit across governance, technology, and communication.</p>
+    </div>
+  </div>
+
+  <div class="skills-grid">
+    <div class="skill">
+      <h3>AI & Governance</h3>
+      <p>
+        AI governance<br>
+        Responsible AI<br>
+        Model risk awareness<br>
+        Ethical & compliance analysis
+      </p>
+    </div>
+
+    <div class="skill">
+      <h3>Privacy & Security</h3>
+      <p>
+        Data privacy & protection<br>
+        Cybersecurity fundamentals<br>
+        Digital responsibility
+      </p>
+    </div>
+
+    <div class="skill">
+      <h3>Technology</h3>
+      <p>
+        HTML, CSS, JavaScript<br>
+        Node.js, Express.js<br>
+        MongoDB, SQL<br>
+        WordPress
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- INTERESTS -->
+
+<section class="section" id="writing">
+  <div class="section-head">
+    <div class="kicker">05 / Beyond the screen</div>
+    <div>
+      <h2>Curious by nature.</h2>
+      <p>
+        Technology is one part of what I do. The rest is reading,
+        observing, writing, and finding interesting connections.
+      </p>
+    </div>
+  </div>
+
+  <div class="notes">
+    <div class="note">
+      <span>01 — Writing</span>
+      <h3>Words, fragments & stories.</h3>
+    </div>
+
+    <div class="note">
+      <span>02 — Interests</span>
+      <h3>AI, privacy & the human side of tech.</h3>
+    </div>
+
+    <div class="note">
+      <span>03 — Culture</span>
+      <h3>Theatre, film & digital media.</h3>
+    </div>
+
+    <div class="note">
+      <span>04 — Learning</span>
+      <h3>Always connecting new dots.</h3>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+  <div class="kicker">06 / Say hello</div>
+
+  <h2>Have something<br><em>in mind?</em></h2>
+
+  <div class="contact-row">
+    <p>
+      I’m always happy to connect over responsible technology,
+      privacy, creative projects, or interesting opportunities.
+    </p>
+
+    <div class="contact-links">
+      <a href="mailto:sudhanshupatilbusiness@gmail.com">EMAIL ↗</a>
+
+      <a href="https://linkedin.com/in/sudhanshu-patil-171b563b1"
+         target="_blank" rel="noreferrer">
+        LINKEDIN ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <span>© 2026 SUDHANSHU PATIL</span>
+  <span>MADE WITH CURIOSITY · MUMBAI, INDIA</span>
+</footer>
+
+</main>
+</body>
+</html>
