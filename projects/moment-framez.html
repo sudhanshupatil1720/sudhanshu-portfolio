@@ -14,491 +14,901 @@
 :root {
   --bg: #f7f7f4;
   --ink: #20211f;
-  --muted: #777970;
+  --muted: #777971;
   --line: #dedfd8;
+  --soft: #eeeee8;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'DM Sans', Arial, sans-serif;
   --mono: 'DM Mono', monospace;
-  --sans: 'DM Sans', sans-serif;
-  --serif: 'Playfair Display', serif;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
+  margin: 0;
   background: var(--bg);
   color: var(--ink);
   font-family: var(--sans);
   -webkit-font-smoothing: antialiased;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+a { color: inherit; text-decoration: none; }
+
+.wrap {
+  width: min(900px, calc(100% - 48px));
+  margin: auto;
 }
 
-nav {
-  height: 76px;
-  padding: 0 8%;
+.nav {
+  height: 78px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   border-bottom: 1px solid var(--line);
 }
 
-.logo {
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: -.4px;
+.brand {
+  font-weight: 700;
+  letter-spacing: -.04em;
+  font-size: 17px;
 }
 
-.back {
-  font: 11px var(--mono);
+.brand span {
   color: var(--muted);
-  transition: color .2s;
+  font-weight: 400;
 }
 
+.navlinks {
+  display: flex;
+  gap: 24px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.navlinks a:hover,
 .back:hover {
   color: var(--ink);
 }
 
-main {
-  max-width: 1050px;
-  margin: auto;
-  padding: 90px 40px 110px;
+.back {
+  display: inline-block;
+  margin: 42px 0 28px;
+  padding: 11px 15px;
+
+  color: #111;
+  font: 11px var(--mono);
+  text-decoration: none;
+
+  background: linear-gradient(
+    110deg,
+    #ff0000,
+    #ff8a00,
+    #e000ff,
+    #bf92ff,
+    #00dfff 100%
+  );
+
+  background-size: 300% 300%;
+  background-position: 50% 50%;
+
+  border: 1px solid #171717;
+
+  box-shadow:
+    3px 3px 0 #ff00a8,
+    -2px -2px 0 #00dfff;
+
+  animation: boxGlitch 1.2s steps(1, end) infinite;
+  transition: scale 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.eyebrow {
+.back:hover {
+  scale: 1.1;
+  filter: brightness(1.3);
+}
+
+.back:active {
+  scale: 0.96;
+}
+
+.framez {
+  background: linear-gradient(
+    100deg,
+    #A44BDB 0%,
+    #D72BAA 55%,
+    #F00083 100%
+  );
+
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: framezFlow 3s cubic-bezier(0.65, 0, 0.35, 1) infinite alternate;
+}
+
+@keyframes framezFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes boxGlitch {
+  0%, 88%, 100% {
+    transform: translate(0, 0);
+    box-shadow:
+      3px 3px 0 #ff00a8,
+      -2px -2px 0 #00dfff;
+    filter: none;
+  }
+
+  89% {
+    transform: translate(-2px, 1px) skewX(-3deg);
+    box-shadow:
+      5px 0 #00dfff,
+      -4px 2px #ff00a8;
+    filter: saturate(1.8);
+  }
+
+  91% {
+    transform: translate(2px, -1px) skewX(2deg);
+    box-shadow:
+      -4px 0 #ff00a8,
+      4px -2px #00dfff;
+  }
+
+  93% {
+    transform: translate(-1px, 0);
+    box-shadow:
+      3px 3px 0 #ff00a8,
+      -2px -2px 0 #00dfff;
+  }
+}
+
+@keyframes independentFlow {
+  0% {
+    background-position:
+      0% 50%,
+      100% 0%,
+      0% 100%,
+      100% 50%,
+      50% 0%,
+      0% 50%;
+  }
+
+  50% {
+    background-position:
+      100% 0%,
+      0% 100%,
+      100% 50%,
+      0% 0%,
+      100% 100%,
+      100% 50%;
+  }
+
+  100% {
+    background-position:
+      50% 100%,
+      100% 50%,
+      0% 0%,
+      50% 100%,
+      0% 50%,
+      0% 50%;
+  }
+}
+
+@keyframes glyphJump {
+  0%, 91%, 100% {
+    transform: translate(0, 0) skewX(0);
+    opacity: 1;
+  }
+
+  92% {
+    transform: translate(-3px, 1px) skewX(-18deg);
+  }
+
+  93% {
+    transform: translate(3px, -2px) skewX(14deg);
+  }
+
+  94% {
+    transform: translate(-2px, 0) skewX(-8deg);
+    opacity: 0.4;
+  }
+
+  95% {
+    transform: translate(2px, 1px);
+    opacity: 1;
+  }
+
+  96% {
+    transform: translate(0);
+  }
+}
+
+@keyframes cyanSplit {
+  0%, 91%, 100% {
+    opacity: 0;
+    transform: translate(0);
+  }
+
+  92% {
+    opacity: 1;
+    transform: translate(-4px, -1px);
+  }
+
+  93% {
+    opacity: 0.9;
+    transform: translate(-2px, 1px);
+  }
+
+  94% {
+    opacity: 0;
+  }
+}
+
+@keyframes magentaSplit {
+  0%, 91%, 100% {
+    opacity: 0;
+    transform: translate(0);
+  }
+
+  92% {
+    opacity: 0.9;
+    transform: translate(4px, 1px);
+  }
+
+  93% {
+    opacity: 1;
+    transform: translate(2px, -1px);
+  }
+
+  94% {
+    opacity: 0;
+  }
+}
+
+.back-label span {
+  display: inline-block;
+  position: relative;
+  animation: glyphJump var(--speed) steps(1, end) infinite;
+  animation-delay: var(--delay);
+  will-change: transform, opacity;
+}
+
+.back-label span::before,
+.back-label span::after {
+  content: attr(data-char);
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.back-label span::before {
+  color: #00dfff;
+  animation: cyanSplit var(--speed) steps(1, end) infinite;
+  animation-delay: var(--delay);
+}
+
+.back-label span::after {
+  color: #ff00a8;
+  animation: magentaSplit var(--speed) steps(1, end) infinite;
+  animation-delay: var(--delay);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .back-label span,
+  .back-label span::before,
+  .back-label span::after {
+    animation: none;
+  }
+}
+
+.lead {
+  max-width: 650px;
+  color: #5e6059;
+  font-size: 17px;
+  line-height: 1.85;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 26px;
+}
+
+.tag {
+  background: var(--soft);
+  padding: 7px 10px;
   font: 10px var(--mono);
-  letter-spacing: 1.5px;
-  color: var(--muted);
-  text-transform: uppercase;
-}
-
-.hero {
-  margin-bottom: 75px;
-}
-
-.hero h1 {
-  font: 500 clamp(48px, 8vw, 88px)/1.08 var(--serif);
-  letter-spacing: -2px;
-  margin: 25px 0;
-}
-
-.hero h1 em {
-  font-weight: 500;
-}
-
-.hero-description {
-  max-width: 590px;
-  font-size: 16px;
-  line-height: 1.9;
   color: #66685f;
 }
 
-.project-meta {
+.actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 55px;
-  margin-top: 45px;
-  padding: 25px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  gap: 12px;
+  margin-top: 30px;
 }
 
-.meta-item span {
-  display: block;
-  font: 10px var(--mono);
-  color: var(--muted);
-  margin-bottom: 9px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+.btn {
+  display: inline-flex;
+  padding: 13px 17px;
+  border: 1px solid var(--ink);
+  font-size: 12px;
+  transition: .2s;
 }
 
-.meta-item p {
-  font-size: 13px;
-  font-weight: 500;
+.btn.primary {
+  background: var(--ink);
+  color: white;
 }
 
-.preview {
-  min-height: 310px;
-  background: #e9e7df;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 40px;
-  margin-bottom: 100px;
-}
-
-.preview-label {
-  font: 10px var(--mono);
-  letter-spacing: 2px;
-  color: #77776d;
-  margin-bottom: 22px;
-}
-
-.preview h2 {
-  font: 500 clamp(38px, 6vw, 65px) var(--serif);
-  color: #30312c;
-  letter-spacing: -1.5px;
-}
-
-.preview p {
-  font: 11px var(--mono);
-  color: #77776d;
-  margin-top: 18px;
+.btn:hover {
+  transform: translateY(-2px);
 }
 
 .section {
+  padding: 62px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.section-head {
   display: grid;
-  grid-template-columns: 190px 1fr;
-  gap: 35px;
-  padding: 50px 0;
-  border-top: 1px solid var(--line);
+  grid-template-columns: 170px 1fr;
+  gap: 28px;
+  align-items: baseline;
+  margin-bottom: 28px;
 }
 
-.section-label {
-  font: 10px var(--mono);
-  letter-spacing: 1px;
-  color: var(--muted);
+.section-head h2 {
+  font-size: clamp(27px, 4vw, 38px);
+  letter-spacing: -.055em;
+  font-weight: 500;
+  margin: 0;
+}
+
+.eyebrow, .kicker {
+  font: 11px var(--mono);
+  letter-spacing: .08em;
   text-transform: uppercase;
-  padding-top: 7px;
+  color: var(--muted);
 }
 
-.section-content h2 {
-  font: 500 31px var(--serif);
-  margin-bottom: 20px;
+.hero {
+  padding: 38px 0 76px;
+  border-bottom: 1px solid var(--line);
 }
 
-.section-content p {
+h1 {
+  max-width: 760px;
+  font-size: clamp(48px, 8vw, 88px);
+  line-height: .99;
+  letter-spacing: -.075em;
+  margin: 24px 0;
+  font-weight: 500;
+}
+
+h1 em {
+  font-family: var(--serif);
+  font-weight: 500;
+}
+
+.lead {
   max-width: 650px;
+  color: #5e6059;
+  font-size: 17px;
+  line-height: 1.85;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 26px;
+}
+
+.tag {
+  background: var(--soft);
+  padding: 7px 10px;
+  font: 10px var(--mono);
   color: #66685f;
+}
+
+.actions {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.btn {
+  display: inline-flex;
+  width: 55%;
+  justify-content: center;
+  padding: 14px 17px;
+  border: 1px solid var(--ink);
+  font-size: 11px;
+  transition: .2s;
+}
+
+.btn.primary {
+  background: var(--ink);
+  color: white;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.section {
+  padding: 48px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.section-head {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 28px;
+  align-items: baseline;
+  margin-bottom: 28px;
+}
+
+.section-head h2 {
+  font-size: clamp(27px, 4vw, 38px);
+  letter-spacing: -.055em;
+  font-weight: 500;
+  margin: 0;
+}
+
+.copy {
+  max-width: 650px;
+  margin-left: 198px;
+  color: #5e6059;
   font-size: 14px;
-  line-height: 1.95;
-  margin-bottom: 15px;
+  line-height: 1.9;
+}
+
+.copy p { margin: 0 0 16px; }
+
+.risk-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.kicker {
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+  padding-bottom: 5px;
+}
+
+.kicker::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  margin-top: 1px;
+  background: #c5c6be;
 }
 
 .features {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-top: 28px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  margin-top: 30px;
+  background: var(--line);
+  border: 1px solid var(--line);
 }
 
 .feature {
-  border: 1px solid var(--line);
-  padding: 22px;
-  min-height: 110px;
+  background: var(--bg);
+  padding: 24px;
+  min-height: 190px;
 }
 
 .feature-number {
   font: 10px var(--mono);
   color: var(--muted);
-  margin-bottom: 17px;
 }
 
 .feature h3 {
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 8px;
+  font-size: 19px;
+  font-weight: 500;
+  margin: 22px 0 10px;
 }
 
 .feature p {
   font-size: 12px;
+  line-height: 1.85;
+  color: var(--muted);
   margin: 0;
-  line-height: 1.7;
 }
 
-.stack {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
-  margin-top: 22px;
+.risk {
+  background: var(--bg);
+  padding: 22px;
+  min-height: 220px;
 }
 
-.stack span {
-  border: 1px solid var(--line);
-  padding: 9px 14px;
+.risk small {
+  font: 10px var(--mono);
+  color: var(--muted);
+}
+
+.risk h3 {
+  font-size: 19px;
+  font-weight: 500;
+  margin: 22px 0 10px;
+}
+
+.risk p {
+  font-size: 12px;
+  line-height: 1.85;
+  color: var(--muted);
+  margin: 0;
+}
+
+.safeguards {
+  border-top: 1px solid var(--line);
+}
+
+.safeguard {
+  display: grid;
+  grid-template-columns: 45px 1fr;
+  gap: 18px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.safeguard-no {
   font: 11px var(--mono);
-  color: #55574f;
+  color: var(--muted);
+}
+
+.safeguard h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.safeguard p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
 }
 
 .reflection {
-  max-width: 650px;
-  margin-left: 225px;
-  padding: 0;
-}
-
-.reflection::before {
-  content: "WHAT I TOOK AWAY";
-  display: block;
-  font: 10px var(--mono);
-  letter-spacing: .08em;
-  color: var(--muted);
-  margin-bottom: 20px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 30px 34px;
+  background: #efefe9;
 }
 
 .reflection p {
-  font: 500 24px/1.65 var(--serif);
+  margin: 0;
+  font: italic clamp(16px, 2.5vw, 24px)/1.5 var(--serif);
   color: #454740;
 }
 
-.visit {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  border-top: 1px solid var(--line);
-  margin-top: 80px;
-  padding-top: 30px;
+.preview {
+  margin: 0 0 12px;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  background: var(--soft);
 }
 
-.visit p {
-  font: 11px var(--mono);
+.preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.preview-caption {
+  margin: 48px 0 14px;
   color: var(--muted);
+  font: 12px var(--mono);
+  text-align: center;
 }
 
-.visit a {
-  font-size: 13px;
-  border-bottom: 1px solid var(--ink);
-  padding-bottom: 5px;
-}
-
-footer {
+.footer {
   border-top: 1px solid var(--line);
-  padding: 28px 8%;
+  padding: 20px 0 28px;
   display: flex;
   justify-content: space-between;
+  gap: 15px;
+  color: var(--muted);
   font: 10px var(--mono);
-  color: var(--muted);
 }
 
-@media(max-width: 700px) {
-  nav {
-    padding: 0 6%;
+@keyframes boxGlitch {
+  0%, 88%, 100% {
+    transform: translate(0, 0);
+    box-shadow:
+      3px 3px 0 #ff00a8,
+      -2px -2px 0 #00dfff;
+    filter: none;
   }
 
-  main {
-    padding: 65px 7% 80px;
+  89% {
+    transform: translate(-2px, 1px) skewX(-3deg);
+    box-shadow:
+      5px 0 #00dfff,
+      -4px 2px #ff00a8;
+    filter: saturate(1.8);
   }
 
-  .hero h1 {
-    letter-spacing: -1px;
+  91% {
+    transform: translate(2px, -1px) skewX(2deg);
+    box-shadow:
+      -4px 0 #ff00a8,
+      4px -2px #00dfff;
   }
 
-  .project-meta {
-    gap: 25px;
-  }
-
-  .section {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .features {
-    grid-template-columns: 1fr;
-  }
-
-  .reflection {
-    margin-left: 0;
-  }
-
-  .reflection p {
-    font-size: 21px;
-  }
-
-  .preview {
-    min-height: 240px;
-  }
-
-  footer {
-    padding: 25px 6%;
-    gap: 15px;
-    flex-wrap: wrap;
+  93% {
+    transform: translate(-1px, 0);
+    box-shadow:
+      3px 3px 0 #ff00a8,
+      -2px -2px 0 #00dfff;
   }
 }
+
+@media(max-width:700px) {
+  .wrap { width: calc(100% - 36px); }
+  .nav { height: 68px; }
+  .navlinks { gap: 14px; font-size: 10px; }
+  .hero { padding: 28px 0 58px; }
+  .features {grid-template-columns: 1fr;}
+  .feature {min-height: auto;}
+  .section { padding: 48px 0; }
+  .section-head {grid-template-columns: 1fr; gap: 14px;}
+  .overview {border-top: 1px solid var(--line);}
+  .copy { margin-left: 0; }
+  .risk-grid { grid-template-columns: 1fr; }
+  .risk { min-height: auto; }
+  .reflection { padding: 25px; }
+  .reflection { margin-left: 0; }
+  .footer { flex-direction: column; }
+}
+
+@media(max-width:420px) {
+  .navlinks { gap: 10px; }
+}
+
 </style>
 </head>
 
 <body>
 
-<nav>
-  <a href="../index.html" class="logo">SP.</a>
-  <a href="../index.html#work" class="back">← BACK TO PROJECTS</a>
-</nav>
+<header class="wrap nav">
+  <a class="brand" href="../index.html">sp<span> / portfolio</span></a>
 
-<main>
+  <nav class="navlinks">
+    <a href="../index.html#about">About</a>
+    <a href="../index.html#work">Work</a>
+    <a href="../index.html#contact">Contact</a>
+  </nav>
+</header>
 
-  <header class="hero">
-    <div class="eyebrow">PROJECT 02 / WEB DEVELOPMENT</div>
+<main class="wrap">
+  <a class="back" href="../index.html#work">
+  <span class="back-label">← BACK TO SELECTED WORK</span>
+  </a>
 
-    <h1>Moment <em>Framez.</em></h1>
+<header class="hero">
+  <div class="eyebrow">PROJECT 02 / WEB DEVELOPMENT</div>
 
-    <p class="hero-description">
-      A photography portfolio website designed to bring visual
-      storytelling and digital presentation together. The project
-      focuses on creating a responsive, structured and modern
-      web experience for a photography brand.
-    </p>
+  <h1>Moment <em class="framez">Framez.</em></h1>
 
-    <div class="project-meta">
-      <div class="meta-item">
-        <span>Category</span>
-        <p>Web Development</p>
-      </div>
+  <p class="lead">
+    A photography portfolio website designed to bring visual
+    storytelling and digital presentation together. The project
+    focuses on creating a responsive, structured and modern
+    web experience for a photography brand.
+  </p>
 
-      <div class="meta-item">
-        <span>Technologies</span>
-        <p>HTML · CSS · JavaScript</p>
-      </div>
+  <div class="meta">
+    <span class="tag">Category · Web Development</span>
+    <span class="tag">Technologies · HTML · CSS · JavaScript</span>
+    <span class="tag">Deployment · Vercel</span>
+    <span class="tag">Year · 2026</span>
+  </div>
+</header>
 
-      <div class="meta-item">
-        <span>Deployment</span>
-        <p>Vercel</p>
-      </div>
-
-      <div class="meta-item">
-        <span>Year</span>
-        <p>2026</p>
-      </div>
-    </div>
-  </header>
+  <p class="preview-caption">Preview of Moment Framez Website</p>
 
   <section class="preview">
-    <div class="preview-label">A DIGITAL PHOTOGRAPHY EXPERIENCE</div>
-    <h2>Moment Framez</h2>
-    <p>CAPTURING MOMENTS. CREATING STORIES.</p>
+  <img
+    src="moment-framez-preview.png"
+    alt="Moment Framez photography website preview"
+  >
   </section>
 
+  <div class="actions">
+  <a class="btn primary"
+     href="https://moment-framez.vercel.app/"
+     target="_blank"
+     rel="noopener noreferrer">
+    Visit Moment Framez ↗
+  </a>
+</div>
+
+  <section class="section overview"></section>
+  
   <section class="section">
-    <div class="section-label">01 / OVERVIEW</div>
-
-    <div class="section-content">
-      <h2>Behind the project.</h2>
-
-      <p>
-        Moment Framez is a responsive photography portfolio
-        website created to present photography work through
-        a clean and organised digital experience.
-      </p>
-
-      <p>
-        The goal was to build a website with clear navigation,
-        a modern interface and a layout that allows the visual
-        content to remain the centre of attention.
-      </p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="section-label">02 / APPROACH</div>
-
-    <div class="section-content">
-      <h2>Designing the experience.</h2>
-
-      <p>
-        The website was developed with an emphasis on responsive
-        layouts, structured navigation and a straightforward
-        user experience.
-      </p>
-
-      <div class="features">
-
-        <div class="feature">
-          <div class="feature-number">01</div>
-          <h3>Visual presentation</h3>
-          <p>
-            A layout designed to give photography and visual
-            content the attention they deserve.
-          </p>
-        </div>
-
-        <div class="feature">
-          <div class="feature-number">02</div>
-          <h3>Responsive design</h3>
-          <p>
-            A website structured to adapt across different
-            screen sizes and devices.
-          </p>
-        </div>
-
-        <div class="feature">
-          <div class="feature-number">03</div>
-          <h3>Navigation</h3>
-          <p>
-            Organised navigation to make the website easier
-            to explore.
-          </p>
-        </div>
-
-        <div class="feature">
-          <div class="feature-number">04</div>
-          <h3>Interface design</h3>
-          <p>
-            A modern interface focused on clarity and
-            visual consistency.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="section-label">03 / TECH STACK</div>
-
-    <div class="section-content">
-      <h2>Built with.</h2>
-
-      <p>
-        The website was developed using core front-end
-        technologies and deployed through Vercel.
-      </p>
-
-      <div class="stack">
-        <span>HTML5</span>
-        <span>CSS3</span>
-        <span>JavaScript</span>
-        <span>Vercel</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="section-label">04 / REFLECTION</div>
-
-    <div class="reflection">
-      <p>
-        Building a website is not only about making things
-        look good. It is about understanding how people
-        experience what you create, one interaction at a time.
-      </p>
-    </div>
-  </section>
-
-  <div class="visit">
-    <p>WANT TO SEE THE WEBSITE?</p>
-    <a href="https://moment-framez.vercel.app/"
-       target="_blank"
-       rel="noopener noreferrer">
-      Visit Moment Framez ↗
-    </a>
+  <div class="section-head">
+    <div class="kicker">01 / OVERVIEW</div>
+    <h2>Behind the project.</h2>
   </div>
+
+  <div class="copy">
+    <p>
+      Moment Framez is a responsive photography portfolio
+      website created to present photography work through
+      a clean and organised digital experience.
+    </p>
+
+    <p>
+      The goal was to build a website with clear navigation,
+      a modern interface and a layout that allows the visual
+      content to remain the centre of attention.
+    </p>
+  </div>
+</section>
+
+  <section class="section">
+  <div class="section-head">
+    <div class="kicker">02 / APPROACH</div>
+    <h2>Designing the experience.</h2>
+  </div>
+
+  <div class="copy">
+    <p>
+      The website was developed with an emphasis on responsive
+      layouts, structured navigation and a straightforward
+      user experience.
+    </p>
+
+    <div class="features">
+
+      <div class="feature">
+        <div class="feature-number">01</div>
+        <h3>Visual presentation</h3>
+        <p>
+          A layout designed to give photography and visual
+          content the attention they deserve.
+        </p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-number">02</div>
+        <h3>Responsive design</h3>
+        <p>
+          A website structured to adapt across different
+          screen sizes and devices.
+        </p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-number">03</div>
+        <h3>Navigation</h3>
+        <p>
+          Organised navigation to make the website easier
+          to explore.
+        </p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-number">04</div>
+        <h3>Interface design</h3>
+        <p>
+          A modern interface focused on clarity and
+          visual consistency.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <section class="section">
+  <div class="section-head">
+    <div class="kicker">03 / TECH STACK</div>
+    <h2>Built with.</h2>
+  </div>
+
+  <div class="copy">
+    <p>
+      The website was developed using core front-end
+      technologies and deployed through Vercel.
+    </p>
+
+    <div class="meta">
+      <span class="tag">HTML5</span>
+      <span class="tag">CSS3</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">Vercel</span>
+    </div>
+  </div>
+</section>
+
+ <section class="section">
+  <div class="section-head">
+    <div class="kicker">04 / REFLECTION</div>
+    <h2>What I learned.</h2>
+  </div>
+
+  <div class="reflection">
+    <p>
+      Building a website is not only about making things
+      look good. It is about understanding how people
+      experience what you create, one interaction at a time.
+    </p>
+  </div>
+</section>
 
 </main>
 
-<footer>
+<footer class="wrap footer">
   <span>© 2026 SUDHANSHU PATIL</span>
-  <span>BUILT WITH CURIOSITY.</span>
+  <span>MADE WITH CURIOSITY · MUMBAI, INDIA</span>
 </footer>
+<script>
 
+const backButton = document.querySelector(".back");
+
+function randomGradient() {
+  const x = Math.random() * 100;
+  const y = Math.random() * 100;
+  const speed = 2 + Math.random() * 3;
+
+  backButton.style.transitionProperty = "background-position";
+  backButton.style.transitionDuration = `${speed}s`;
+  backButton.style.backgroundPosition = `${x}% ${y}%`;
+
+  setTimeout(randomGradient, 1800 + Math.random() * 2200);
+}
+
+randomGradient();
+    
+document.querySelectorAll(".back-label").forEach(label => {
+  const originalText = label.textContent;
+  label.textContent = "";
+
+  [...originalText].forEach(char => {
+    const letter = document.createElement("span");
+    const visibleChar = char === " " ? "\u00A0" : char;
+
+    letter.textContent = visibleChar;
+    letter.setAttribute("data-char", visibleChar);
+
+    // Different timing for each letter
+    letter.style.setProperty(
+      "--speed",
+      `${2 + Math.random() * 4}s`
+    );
+
+    letter.style.setProperty(
+      "--delay",
+      `${-Math.random() * 6}s`
+    );
+
+    label.appendChild(letter);
+  });
+});
+</script>
 </body>
 </html>

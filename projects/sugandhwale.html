@@ -121,7 +121,7 @@ main {
   font-weight: 500;
 }
 
-.brand-preview {
+.brand-iew {
   min-height: 330px;
   background: #e9e8dc;
   display: flex;
@@ -211,20 +211,6 @@ main {
   font-size: 12px;
   line-height: 1.7;
   margin: 0;
-}
-
-.stack {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
-  margin-top: 22px;
-}
-
-.stack span {
-  border: 1px solid var(--line);
-  padding: 9px 14px;
-  font: 11px var(--mono);
-  color: #626552;
 }
 
 .reflection {
@@ -331,10 +317,15 @@ footer {
 
 <body>
 
-<nav>
-  <a href="../index.html" class="logo">SP.</a>
-  <a href="../index.html#work" class="back">← BACK TO PROJECTS</a>
-</nav>
+<header class="wrap nav">
+  <a class="brand" href="../index.html">sp<span> / portfolio</span></a>
+
+  <nav class="navlinks">
+    <a href="../index.html#about">About</a>
+    <a href="../index.html#work">Work</a>
+    <a href="../index.html#contact">Contact</a>
+  </nav>
+</header>
 
 <main>
 
